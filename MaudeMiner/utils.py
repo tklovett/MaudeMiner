@@ -9,9 +9,14 @@ def update_progress(prefix, complete, total):
 
 	progress = '\r{0}{1:.2f}%'.format(prefix, complete / float(total) * 100)
 	sys.stdout.write(progress)
+
+	if complete == total:
+		sys.stdout.write("\n")
+
 	sys.stdout.flush()
 
 def list_table_options(prefix=" "):
-	print prefix + "all"
+	print prefix + "all (recommended)"
 	for t in db.get_table_names():
 		print prefix + t
+
