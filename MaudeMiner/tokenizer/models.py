@@ -27,7 +27,6 @@ class Token(base):
 	word           = Column(String)
 	part_of_speech = Column(String)
 
-	# narratives = relationship("Narrative", secondary=Contains_Token)
 	narratives = relationship("Narrative",
         secondary=Contains_Token,
         backref="tokens")
@@ -38,4 +37,16 @@ class Token(base):
 
 	def __repr__(self):
 		return "<Token('%s','%s')>" %(self.word, self.part_of_speech)
+
+
+class Word(base):
+	__tablename__ = "Words"
+	id   = Column(Integer, primary_key=True, autoincrement=True)
+	word = Column(String)
+
+	def __init__(self, word=None):
+		self.word = word
+	
+	def __repr__(self):
+		return "<Word('{0}')>".format(self.word)
 
