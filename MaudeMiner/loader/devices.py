@@ -70,9 +70,9 @@ def load():
 		db.save(device, commit=False)
 
 
-		if files.lineno() % 1000 == 0:
-			update_progress("Loaded: ", files.lineno(), LINES_IN_CURRENT_FILE[0])
-			if files.lineno() % LINES_PER_DB_COMMIT == 0:
+		if files.filelineno() % 1000 == 0:
+			update_progress("Loaded: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
+			if files.filelineno() % LINES_PER_DB_COMMIT == 0:
 				db.commit()
 
 	db.commit()
