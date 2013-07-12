@@ -1,0 +1,1 @@
+SELECT devices.brand_name, narratives.* FROM narratives, devices WHERE narratives.report_key = devices.report_key AND devices.brand_name = 'STEALTHSTATION S7 SYSTEM';

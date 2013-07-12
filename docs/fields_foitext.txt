@@ -1,0 +1,6 @@
+MDR Report Key
+MDR Text Key
+Text Type Code
+Patient Sequence Number
+Date Report
+Text

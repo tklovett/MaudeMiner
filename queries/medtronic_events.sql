@@ -1,0 +1,1 @@
+SELECT DISTINCT contacts.name, events.report_key, narratives.text FROM contacts, events, narratives WHERE contacts.name like '%medtronic%' AND events.manufacturer_id = contacts.id AND narratives.text LIKE '%crash%';

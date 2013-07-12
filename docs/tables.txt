@@ -1,0 +1,41 @@
+Table Descriptions
+==================
+
+
+# FDA Specified Tables
+
+Events				mdrfoi*.txt
+DeviceProblemCodes	deviceproblemcodes.txt
+Devices				foidev*.txt
+DeviceProblems		foidevproblem.txt
+Narratives			foitext*.txt
+Patients			patient*.txt
+
+
+Expected Number of Records
+==========================
+Notes:
+* As of 6/17/2013
+* Ignoring *Add.txt and *Change.txt
+
+# Events
+194197 + 2580077
+= 2774274
+
+# DeviceProblemCodes
+= 986
+
+# Devices
+138096 + 63440 + 52880 + 53293 + 58067 + 65808 + 67844 + 57048 + 93415 + 134531 + 149343 + 164619 + 221482 + 338827 + 415753 + 521766 + 136916
+= 2733128
+
+# DeviceProblems
+= 1425584
+
+# Narratives
+295725 + 45320 + 140703 + 105287 + 84968 + 107575 + 114525 + 120525 + 118854 + 96686 + 177087 + 234224 + 237348 + 264703 + 387980 + 695586 + 957146 + 1192532 + 27404
+= 5404178
+
+# Patients
+2564091 + 194223
+= 2758314

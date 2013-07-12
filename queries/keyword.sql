@@ -1,0 +1,1 @@
+SELECT * FROM narratives WHERE text LIKE '%crash%';

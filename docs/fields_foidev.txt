@@ -1,0 +1,45 @@
+MDR Report Key
+Device Event key
+Implant Flag
+Date Removed Flag
+Device Sequence No
+Date Received (from mdr_document table)
+Brand Name (D1)
+Generic Name (D2)
+Manufacturer Name (D3)
+Manufacturer Address 1 (D3)
+Manufacturer Address 2 (D3)
+Manufacturer City (D3)
+Manufacturer State Code (D3)
+Manufacturer Zip Code (D3)
+Manufacturer Zip Code ext (D3)
+Manufacturer Country Code (D3)
+Manufacturer Postal Code (D3)
+Expiration Date of Device (D4)
+Model Number (D4)
+Lot Number (D4)
+Catalog Number (D4)
+Other ID Number (D4)
+Device Operator (D5)
+Device Availability (D10)
+Date Returned to Manufacturer (D10)
+Device Report Product Code
+Device Age (F9)
+Device Evaluated by Manufacturer (H3)
+Baseline brand name
+Baseline generic name
+Baseline model no
+Baseline catalog no
+Baseline other id no
+Baseline device family
+Baseline shelf life contained in label
+Baseline shelf life in months
+Baseline PMA flag
+Baseline PMA no
+Baseline 510(k) flag
+Baseline 510(k) no
+Baseline preamendment
+Baseline transitional
+Baseline 510(k exempt flag
+Baseline date) first marketed
+Baseline date ceased marketing

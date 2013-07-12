@@ -1,0 +1,5 @@
+MDR Report Key
+Patient Sequence Number
+Date Received
+Sequence Number Treatment
+Sequence Number Outcome

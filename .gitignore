@@ -1,0 +1,12 @@
+*.db
+*.db-journal
+*.pdf
+*.pyc
+__pycache__/
+
+build/
+
+# things I tend to generate
+out.txt
+tasks.txt
+profile.txt
