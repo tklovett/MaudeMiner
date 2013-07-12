@@ -6,7 +6,7 @@ A tool for analyzing the FDA's MAUDE dataset.
 
 Installation
 ------------
-git clone XXX
+git clone https://github.com/tklovett/MaudeMiner.git
 
 
 Running

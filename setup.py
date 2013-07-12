@@ -1,11 +1,11 @@
 from distutils.core import setup
 
 setup(
-    name='Maude',
-    version='0.0.0',
+    name='MaudeMiner',
+    version='0.0.1',
     author='Thomas Lovett',
     author_email='tklovett@umich.edu',
-    packages=['maude'],
+    packages=['MaudeMiner'],
     license='LICENSE.txt',
     description='A tool for analyzing the FDA\'s MAUDE dataset.',
     long_description=open('README.txt').read(),
