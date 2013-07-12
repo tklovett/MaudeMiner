@@ -1,5 +1,6 @@
 import os
 from MaudeMiner.database import db
+from MaudeMiner.settings import DATA_PATH
 from datetime import datetime
 from sqlalchemy.exc import InvalidRequestError
 
@@ -149,7 +150,7 @@ def __write_results(result, title="", doWrite=True, query=""):
 
 		# open output file
 		if doWrite:
-			results_dir = "../data/query_results/"
+			results_dir = DATA_PATH + "query_results/"
 			if not os.path.exists(results_dir):
 				os.makedirs(results_dir)
 
