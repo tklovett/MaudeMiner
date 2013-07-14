@@ -44,16 +44,12 @@ class DatabaseManager:
 			self.session.commit()
 			self.session.close()
 
-	def save(self, thing, commit=True, verbose=False, suppress_errors=False):
+	def save(self, thing, commit=True, suppress_errors=False):
 		ok = True
 		try:
 			self.session.add(thing)
-			if verbose:
-				print "Added: %s" % thing
 			if commit:
 				self.session.commit()
-				if verbose:
-					print "Committed!"
 		except IntegrityError as e:
 			if not suppress_errors:
 				print "IntegrityError:"

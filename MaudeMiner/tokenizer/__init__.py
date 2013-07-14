@@ -15,19 +15,32 @@ def load_file():
 
 	print " === Building Word List === "
 	files = get_files_with_prefix("foitext", excludes=["foitextChange", 'foitextAdd'])
+	
 	to = " " * len(string.punctuation)
 	trans = string.maketrans(string.punctuation, to)
+
+	batch = set()
+
 	for line in files:
 		pos = line.rfind('|')
 		text = line[pos:].translate(trans)
 		words = text.split()
 		
-		for w in words:
-			word = models.Word(w)
-			db.save(word, suppress_errors=True)
+		batch |= set(text.split())
 
-		if files.filelineno() % 100 == 0:
+		if len(batch) > 1000:
+			for w in batch:
+				db.save(models.Word(w), suppress_errors=True)
 			update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
+			
+
+		# for w in words:
+		# 	db.save(models.Word(w), commit=False)
+		# 	# db.save(word, commit=False, suppress_errors=True)
+
+		# if files.filelineno() % 100 == 0:
+		# 	db.commit()
+		# 	update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 
 def load():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])
