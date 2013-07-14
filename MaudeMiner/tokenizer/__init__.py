@@ -1,25 +1,21 @@
 import nltk
 from MaudeMiner.database import db
-from MaudeMiner.utils import update_progress
-from MaudeMiner.settings import LINES_PER_DB_COMMIT
-from MaudeMiner.maude.models import Narrative
 from MaudeMiner.tokenizer import models
+from MaudeMiner.utils import update_progress
+from MaudeMiner.loader.utils import get_files_with_prefix
+from MaudeMiner.maude.models import Narrative
+from MaudeMiner.settings import LINES_PER_DB_COMMIT, TXTS_PATH
 
 nouns_verbs_adjectives = []
 
 
-def page_query(q):
-	offset = 0
-	while True:
-		r = False
-		for elem in q.limit(1000).offset(offset):
-			r = True
-			yield elem
-		offset += 1000
-		db.commit()
-		if not r:
-			break
+def load_file():
+	files = get_files_with_prefix("foitext", excludes=["foitextChange", 'foitextAdd'])
 
+	for line in files:
+		import string
+		text = line.translate(dict.fromkeys(map(ord, string.punctuation), u' '))
+		print text
 
 def load():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])
@@ -60,6 +56,9 @@ def run(args=None):
 
 		elif "load" in words:
 			load()
+
+		elif "loadfile" in words:
+			load_file()
 
 		elif "exit" in words:
 			return
