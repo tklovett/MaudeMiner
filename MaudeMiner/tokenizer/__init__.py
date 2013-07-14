@@ -3,7 +3,7 @@ import string
 from MaudeMiner.database import db
 from MaudeMiner.tokenizer import models
 from MaudeMiner.utils import update_progress
-from MaudeMiner.loader.utils import get_files_with_prefix
+from MaudeMiner.loader.utils import get_files_with_prefix, LINES_IN_CURRENT_FILE
 from MaudeMiner.maude.models import Narrative
 from MaudeMiner.settings import LINES_PER_DB_COMMIT, TXTS_PATH
 
