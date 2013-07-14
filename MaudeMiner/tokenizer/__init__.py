@@ -7,35 +7,46 @@ from MaudeMiner.tokenizer import models
 
 nouns_verbs_adjectives = []
 
+
+def page_query(q):
+	offset = 0
+	while True:
+		r = False
+		for elem in q.limit(1000).offset(offset):
+			r = True
+			yield elem
+		offset += 1000
+		db.commit()
+		if not r:
+			break
+
+
 def load():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])
 
+	print " === Tokenizing === "
 	session = db.get_session()
-	q = session.query(Narrative).filter()
+	q = session.query(Narrative)
 	# q = q.limit(100)
 
 	num_results = q.count()
 
-	i = 0
-	for narrative in q:
-		tokens = nltk.word_tokenize(narrative.text)
-		for token in tokens:
+	offset = 0
+	batch_size = 100
+	while offset < num_results:
+		for narrative in q.limit(batch_size).offset(offset):
+			tokens = nltk.word_tokenize(narrative.text)
+			for token in tokens:
 				word = models.Word(token)
 				db.save(word, commit=False)
 
-		if i % LINES_PER_DB_COMMIT == 0:
-			update_progress("Processed: ", i, num_results)
-			db.commit()
-		
-		i += 1
+		offset += batch_size
+		update_progress("Processed: ", offset, num_results)
+		db.commit()
 	
 	# final commit
 	db.commit()
 	print "\nDone." # end update progress line
-		
-
-
-
 
 
 def run(args=None):

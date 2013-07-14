@@ -8,7 +8,7 @@ from MaudeMiner.settings import LINES_PER_DB_COMMIT
 EXPECTED_NUMBER_OF_FIELDS = 6
 
 
-def load():
+def load(limit_commits=None):
 	# ensure tables exists
 	db.create_tables(["Narratives"])
 
@@ -16,6 +16,7 @@ def load():
 
 	files = get_files_with_prefix("foitext", excludes=["foitextChange", 'foitextAdd'])
 
+	num_commits = 0
 	for line in files:
 		v = split_fields(line)
 		if len(v) != EXPECTED_NUMBER_OF_FIELDS:
@@ -35,6 +36,9 @@ def load():
 			update_progress("Loaded: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 			if files.filelineno() % LINES_PER_DB_COMMIT == 0:
 				db.commit()
+				num_commits += 1
+				if limit_commits and num_commits == limit_commits:
+					break
 
 	db.commit()
 	print "\n # Done # \n"

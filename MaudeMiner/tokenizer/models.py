@@ -5,16 +5,6 @@ from MaudeMiner.database import db
 from MaudeMiner.database.base import base
 
 
-# def create():
-# 	print "Creating Tables: "
-# 	base.metadata.create_all(db.engine)
-# 	print "OK"
-
-# def drop():
-# 	print "Dropping Tables: "
-# 	base.metadata.drop_all(db.engine)
-# 	print "OK"
-
 Contains_Token = Table('Contains_Token', base.metadata,
 	Column('report_key', Integer, ForeignKey('Narratives.report_key')),
 	Column('token_id', Integer, ForeignKey('Tokens.id'))

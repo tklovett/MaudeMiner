@@ -26,7 +26,7 @@ def run(args=None):
 	if "Events" in args:
 		events.load()
 	if "Narratives" in args:
-		narratives.load()
+		narratives.load(2)
 	if "Devices" in args:
 		devices.load()
 	if "DeviceProblems" in args:

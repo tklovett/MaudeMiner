@@ -19,4 +19,3 @@ def list_table_options(prefix=" "):
 	print prefix + "all (recommended)"
 	for t in db.get_table_names():
 		print prefix + t
-
