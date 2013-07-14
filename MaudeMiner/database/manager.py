@@ -44,7 +44,7 @@ class DatabaseManager:
 			self.session.commit()
 			self.session.close()
 
-	def save(self, thing, commit=True, verbose=False):
+	def save(self, thing, commit=True, verbose=False, suppress_errors=False):
 		ok = True
 		try:
 			self.session.add(thing)
@@ -55,16 +55,19 @@ class DatabaseManager:
 				if verbose:
 					print "Committed!"
 		except IntegrityError as e:
-			print "IntegrityError:"
-			print "\t%s" % e.orig.args
+			if not suppress_errors:
+				print "IntegrityError:"
+				print "\t%s" % e.orig.args
 			ok = False
 		except SQLAlchemyError as e:
-			print "SQLAlchemyError:"
-			print "\t%s" % e
+			if not suppress_errors:
+				print "SQLAlchemyError:"
+				print "\t%s" % e
 			ok = False
 		except:
-			print "Could not save item:"
-			print "\t%s" % sys.exc_info()[0]
+			if not suppress_errors:
+				print "Could not save item:"
+				print "\t%s" % sys.exc_info()[0]
 			ok = False
 
 		if not ok:

@@ -1,4 +1,5 @@
 import nltk
+import string
 from MaudeMiner.database import db
 from MaudeMiner.tokenizer import models
 from MaudeMiner.utils import update_progress
@@ -10,12 +11,23 @@ nouns_verbs_adjectives = []
 
 
 def load_file():
-	files = get_files_with_prefix("foitext", excludes=["foitextChange", 'foitextAdd'])
+	db.create_tables(["Contains_Token", "Tokens", "Words"])
 
+	print " === Building Word List === "
+	files = get_files_with_prefix("foitext", excludes=["foitextChange", 'foitextAdd'])
+	to = " " * len(string.punctuation)
+	trans = string.maketrans(string.punctuation, to)
 	for line in files:
-		import string
-		text = line.translate(dict.fromkeys(map(ord, string.punctuation), u' '))
-		print text
+		pos = line.rfind('|')
+		text = line[pos:].translate(trans)
+		words = text.split()
+		
+		for w in words:
+			word = models.Word(w)
+			db.save(word, suppress_errors=True)
+
+		if files.filelineno() % 100 == 0:
+			update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 
 def load():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])

@@ -9,7 +9,10 @@ Installation
 $ git clone https://github.com/tklovett/MaudeMiner.git
 $ cd MaudeMiner
 $ python setup.py install
-$ pip install nltk
+$ pip install nltk sqlalchemy beautifulsoup4
+
+Then modify the settings as desired:
+$ nano MaudeMiner/settings.py
 
 
 Running
