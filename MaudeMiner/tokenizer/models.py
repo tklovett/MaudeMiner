@@ -32,7 +32,7 @@ class Token(base):
 class Word(base):
 	__tablename__ = "Words"
 	id   = Column(Integer, primary_key=True, autoincrement=True)
-	word = Column(String, unique=True)
+	word = Column(String)
 
 	def __init__(self, word=None):
 		self.word = word

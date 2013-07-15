@@ -28,11 +28,12 @@ def load_file():
 		
 		batch |= set(text.split())
 
-		if len(batch) > 1000:
+		if len(batch) > 10000:
 			for w in batch:
-				db.save(models.Word(w), suppress_errors=True)
+				db.save(models.Word(w), commit=False)
 			update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
-			
+			db.commit()
+			batch.clear()
 
 		# for w in words:
 		# 	db.save(models.Word(w), commit=False)
