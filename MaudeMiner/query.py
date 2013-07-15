@@ -154,7 +154,7 @@ def __write_results(result, title="", doWrite=True, query=""):
 			if not os.path.exists(results_dir):
 				os.makedirs(results_dir)
 
-			now = datetime.utcnow().strftime("%Y-%m-%d-%H%M%S")
+			now = datetime.now().strftime("%Y_%m_%d__%I_%M_%S")
 			filename = results_dir + "query_results_" + now
 			
 			txt = open(filename+".txt", 'w')
