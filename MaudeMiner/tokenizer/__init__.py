@@ -7,8 +7,13 @@ from MaudeMiner.loader.utils import get_files_with_prefix, LINES_IN_CURRENT_FILE
 from MaudeMiner.maude.models import Narrative
 from MaudeMiner.settings import LINES_PER_DB_COMMIT, TXTS_PATH
 
-nouns_verbs_adjectives = []
 
+def removeNonAscii(s):
+	return "".join(i for i in s if ord(i) < 128)
+
+def removePunctuation(s):
+	# TODO replace with ' '
+	return s.translate(None, string.punctuation)
 
 def load_file():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])
@@ -16,32 +21,27 @@ def load_file():
 	print " === Building Word List === "
 	files = get_files_with_prefix("foitext", excludes=["foitextChange", 'foitextAdd'])
 	
-	to = " " * len(string.punctuation)
-	trans = string.maketrans(string.punctuation, to)
-
 	batch = set()
 
 	for line in files:
 		pos = line.rfind('|')
-		text = line[pos:].translate(trans)
-		words = text.split()
-		
-		batch |= set(text.split())
 
-		if len(batch) > 10000:
+		text = removeNonAscii(line[pos+1:])
+		text = removePunctuation(text)
+		# print text
+
+		batch |= set(unicode(text).split())
+
+		if len(batch) > 100000:
 			for w in batch:
 				db.save(models.Word(w), commit=False)
-			update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 			db.commit()
 			batch.clear()
 
-		# for w in words:
-		# 	db.save(models.Word(w), commit=False)
-		# 	# db.save(word, commit=False, suppress_errors=True)
+		if files.filelineno() % 1000 == 0:
+			update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 
-		# if files.filelineno() % 100 == 0:
-		# 	db.commit()
-		# 	update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
+
 
 def load():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])
