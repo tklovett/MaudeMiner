@@ -1,4 +1,6 @@
 import sys
+import string
+import re
 from MaudeMiner.database import db
 
 def update_progress(prefix, complete, total):
@@ -19,3 +21,7 @@ def list_table_options(prefix=" "):
 	print prefix + "all (recommended)"
 	for t in db.get_table_names():
 		print prefix + t
+
+regex = re.compile('[%s]' % re.escape(string.punctuation))
+def strip_punctuation(s, replace=''):
+	return regex.sub(replace, s)
