@@ -27,7 +27,7 @@ def process_results(result, title="", doWrite=True, query=""):
 		if not os.path.exists(results_dir):
 			os.makedirs(results_dir)
 
-		now = datetime.now().strftime("%Y_%m_%d__%I_%M_%S")
+		now = datetime.now().strftime("%Y_%m_%d__%I_%M_%p")
 		filename = results_dir + "query_results_" + now
 		
 		txt = open(filename+".txt", 'w')
