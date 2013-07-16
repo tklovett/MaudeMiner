@@ -2,8 +2,8 @@ import string
 from itertools import permutations
 from MaudeMiner.querier.sql import execute_sql
 
-def run():
-	print "Enter the list of comma-separate keywords to search for at the prompt."
+def run(args):
+	print "Enter the list of comma-separated keywords to search for at the prompt."
 	text = raw_input("keywords> ")
 
 	# strip whitespace and split by commas to get list of keywords

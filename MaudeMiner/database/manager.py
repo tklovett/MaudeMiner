@@ -33,6 +33,7 @@ class DatabaseManager:
 		self.session    = sessionmaker(bind=self.engine)()
 		self.connection = self.engine.connect()
 		print "Connected to " + db_filename
+		print ""
 
 	def get_session(self):
 		return sessionmaker(bind=self.engine)()

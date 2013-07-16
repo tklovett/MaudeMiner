@@ -51,56 +51,6 @@ class Query:
 		self.q = self.q.limit(number)
 
 
-
-
-def __update_tables(action, tables):
-	for t in tables:
-		if db.isValidTable(t):
-			if action == "add" and t not in __query_tables:
-				__query_tables.append(t)
-			elif action == "rm" and t in __query_tables:
-				__query_tables.remove(t)
-			else:
-				print "Usage: tables [add|rm] <table1> <table2> ..."
-		else:
-			print "Invalid table name"
-
-def __update_limit(limit):
-	__query_limit = limit
-	print __query_limit
-
-def __get_records(db):
-	sql = "SELECT * FROM"
-	for table in __query_tables:
-		sql += " " + table
-
-	# limit
-	if __query_limit != None:
-		sql += " LIMIT " + __query_limit
-
-	sql += ";"
-	r = db.execute_sql(sql)
-	process_results(r, "", doWrite=False)
-	process_results(r)
-
-
-def raw_sql_mode(db):
-	while (1):
-		sql = raw_input("sqlite> ")
-		if sql in ["quit", "q", "exit"]:
-			return
-		if sql == "":
-			continue
-		if not sql.endswith(";"):
-			sql += ";"
-
-		r = db.execute_sql(sql)
-
-		if r and r.returns_rows:
-			process_results(r, query=sql)
-		else:
-			print "-> 0 records returned"
-
 def build_query(db, name):
 	model = db.get_model(name)
 	query = Query(model)

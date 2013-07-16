@@ -1,4 +1,5 @@
 from MaudeMiner.database import db
+from MaudeMiner import interactive
 from utils import list_table_options
 import query as q
 import cleanser
@@ -7,9 +8,6 @@ import loader
 import tokenizer
 import querier
 
-
-def __exit__():
-	db.disconnect()
 
 def switch_db(args):
 	if len(args) == 0:
@@ -56,18 +54,6 @@ def count_records(args):
 			print '{0:20s} {1:10d}'.format(table, count)
 
 
-#####################
-# Enter query modes #
-#####################
-def sql(args):
-	q.raw_sql_mode(db)
-def query(args):
-	if len(args) != 1:
-		print "Usage: query <table>"
-		return
-	q.build_query(db, args[0])
-
-
 ######################
 # Enter Python shell #
 ######################
@@ -86,31 +72,23 @@ def shell(args):
 
 
 
-def run():	
-	while (True):
-		cmd = raw_input("> ")
-		words = cmd.split(' ')
-		if words[0] in commands:
-			commands[words[0]](words[1:])
-		elif words[0] == "":
-			pass
-		else:
-			print "Command not recognized. Enter \"help\" for a list of commands"
+def run():
+	interactive.start("module", 0, commands)
 
+	# if we've returned from the top level interactive,
+	# then quit the program
+	db.disconnect()
+	exit()
 
 commands = {
-	"cleanse":  cleanser.run,
-	"count":    count_records,
-	"create":   create_tables,
 	"download": downloader.run,
-	"drop":     drop_tables,
-	"exit":     quit,
-	"help":     print_help,
 	"load":      loader.run,
-	"query":     query,
-	"shell":     shell,
-	"sql":       sql,
+	"create":   create_tables,
+	"drop":     drop_tables,
+	"count":    count_records,
 	"switchdb":  switch_db,
+	"shell":     shell,
+	"cleanse":  cleanser.run,
 	"tokenizer": tokenizer.run,
 	"querier":   querier.run,
 }

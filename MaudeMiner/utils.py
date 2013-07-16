@@ -25,3 +25,4 @@ def list_table_options(prefix=" "):
 regex = re.compile('[%s]' % re.escape(string.punctuation))
 def strip_punctuation(s, replace=''):
 	return regex.sub(replace, s)
+	
