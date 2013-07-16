@@ -41,7 +41,7 @@ def load_file():
 		if files.filelineno() % 1000 == 0:
 			update_progress("Processed: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 
-
+	print "\nDone."
 
 def load():
 	db.create_tables(["Contains_Token", "Tokens", "Words"])

@@ -5,6 +5,7 @@ import cleanser
 import downloader
 import loader
 import tokenizer
+import querier
 
 
 def __exit__():
@@ -105,11 +106,12 @@ commands = {
 	"drop":     drop_tables,
 	"exit":     quit,
 	"help":     print_help,
-	"load":     loader.run,
-	"query":    query,
-	"shell":    shell,
-	"sql":      sql,
-	"switchdb": switch_db,
+	"load":      loader.run,
+	"query":     query,
+	"shell":     shell,
+	"sql":       sql,
+	"switchdb":  switch_db,
 	"tokenizer": tokenizer.run,
+	"querier":   querier.run,
 }
 
