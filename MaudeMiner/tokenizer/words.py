@@ -16,7 +16,7 @@ def get_or_create(session, model, defaults=None, **kwargs):
         return instance, False
     else:
         params = dict((k, v) for k, v in kwargs.iteritems() if not isinstance(v, ClauseElement))
-        params.update(defaults)
+        # params.update(defaults)
         instance = model(**params)
         session.add(instance)
         return instance, True
@@ -32,30 +32,23 @@ def load(args):
 	offset = 0
 	batch_size = 10000
 
-	dictionary = {}
+	word_frequencies = {}
 
 	while offset < num_results:
 		# get a batch of narratives
 		for narrative in session.query(Narrative).limit(batch_size).offset(offset):
 			tokens = wordpunct_tokenize(narrative.text)
 
-			# load dictionary from each narrative in the batch
+			# load word_frequencies from each narrative in the batch
 			for token in tokens:
-				if token not in dictionary:
-					dictionary[token] = 1
+				if token not in word_frequencies:
+					word_frequencies[token] = 1
 				else:
-					dictionary[token] += 1
+					word_frequencies[token] += 1
 
-		# for key, val in dictionary.items():
-			# print key, val
-
-		# print len(dictionary)
-		# dictionary.clear()
-		# offset += batch_size
-		# continue
-
-		for word, freq in dictionary.items():
-			instance, isNew = get_or_create(db.session, m.Word, defaults={"frequency": 0}, word=word)
+		# get or create each word in word_frequencies
+		for word, freq in word_frequencies.items():
+			instance, isNew = get_or_create(db.session, m.Word, word=word)
 			if isNew:
 				instance.frequency = freq
 			else:
@@ -63,24 +56,8 @@ def load(args):
 
 		db.commit()
 
-		# # get list of matching word objects
-		# q_words = session.query(m.Word).filter(m.Word.word.in_(dictionary.keys())).all()
-
-		# # update existing words in database
-		# print "Updating", len(q_words)
-		# for word in q_words:
-		# 	word.frequency += dictionary[word.word]
-		# 	del dictionary[word.word]
-
-		# # create new words in database
-		# print "Creating", len(dictionary.keys())
-		# for word, freq in dictionary.items():
-		# 	instance = m.Word(word, freq)
-		# 	db.save(instance, commit=False)
-		# # db.commit()
-
 		# prepare for next batch
-		dictionary.clear()
+		word_frequencies.clear()
 		offset += batch_size
 		update_progress("Processed: ", offset, num_results)
 	
