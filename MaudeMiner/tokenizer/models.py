@@ -31,12 +31,14 @@ class Token(base):
 
 class Word(base):
 	__tablename__ = "Words"
-	id   = Column(Integer, primary_key=True, autoincrement=True)
-	word = Column(String)
+	id        = Column(Integer, primary_key=True, autoincrement=True)
+	word      = Column(String)
+	frequency = Column(Integer)
 
-	def __init__(self, word=None):
+	def __init__(self, word=None, frequency=0):
 		self.word = word
+		self.frequency = frequency
 	
 	def __repr__(self):
-		return "<Word('{0}')>".format(self.word)
+		return "<Word('{0}', '{1}')>".format(self.word, self.frequency)
 

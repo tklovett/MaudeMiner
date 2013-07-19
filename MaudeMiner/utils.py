@@ -25,4 +25,6 @@ def list_table_options(prefix=" "):
 regex = re.compile('[%s]' % re.escape(string.punctuation))
 def strip_punctuation(s, replace=''):
 	return regex.sub(replace, s)
-	
+
+def strip_non_ascii(s):
+	return "".join(i for i in s if ord(i) < 128)

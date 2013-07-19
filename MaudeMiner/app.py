@@ -61,7 +61,7 @@ def shell(args):
 	''' A simple Python Shell '''
 	while True:
 		try:
-			text = raw_input(">>> ")
+			text = raw_input("|- python> ")
 			if text == "exit":
 				return
 			print eval(text)

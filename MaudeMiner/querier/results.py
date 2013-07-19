@@ -55,7 +55,7 @@ def process_results(result, title="", doWrite=True, query=""):
 				doPrint = False
 		
 		if doPrint:
-			screen_write_row(row)
+			screen_write_row(row, title)
 
 		if doWrite:
 			txt_write_row(txt, template, row)
@@ -73,7 +73,7 @@ def process_results(result, title="", doWrite=True, query=""):
 		txt.flush()
 		txt.close()
 
-def screen_write_row(row):
+def screen_write_row(row, title=''):
 	print "=" * 3 + title + "=" * (77-len(title))
 	for key in row.keys():
 		print key + ":"

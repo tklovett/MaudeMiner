@@ -1,7 +1,8 @@
 import nltk
 import string
+from MaudeMiner import interactive
 from MaudeMiner.database import db
-from MaudeMiner.tokenizer import models
+from MaudeMiner.tokenizer import models, words
 from MaudeMiner.utils import update_progress, strip_punctuation
 from MaudeMiner.loader.utils import get_files_with_prefix, LINES_IN_CURRENT_FILE
 from MaudeMiner.maude.models import Narrative
@@ -28,6 +29,7 @@ def load_file():
 
 		text = removeNonAscii(line[pos+1:])
 		text = strip_punctuation(text, replace=' ')
+		text = text.lower()
 		# print text
 
 		batch |= set(unicode(text).split())
@@ -72,24 +74,10 @@ def load():
 
 
 def run(args=None):
+	interactive.start("tokenizer", 1, commands)
 
-	while (True):
-		cmd = raw_input("tokenizer> ")
-		words = cmd.split(' ')
-
-		if "clear" in words:
-			db.drop_tables(["Contains_Token", "Tokens"])
-
-		elif "load" in words:
-			load()
-
-		elif "loadfile" in words:
-			load_file()
-
-		elif "exit" in words:
-			return
-		elif words[0] == "":
-			pass
-		else:
-			print "huh?"
-
+commands = {
+	"load": load,
+	"loadfile": load_file,
+	"words": words.load,
+}
