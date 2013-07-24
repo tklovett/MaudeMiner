@@ -3,6 +3,7 @@
 *.pdf
 *.pyc
 __pycache__/
+dist/
 
 build/
 

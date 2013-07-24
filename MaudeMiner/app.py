@@ -1,7 +1,6 @@
 from MaudeMiner.database import db
 from MaudeMiner import interactive
 from utils import list_table_options
-import query as q
 import cleanser
 import downloader
 import loader
