@@ -1,0 +1,30 @@
+Security Problems
+=================
+2882|Application security issue
+2899|Computer system security issue
+3025|Unauthorized access to computer system
+
+Computer Problems
+=================
+1111|Computer hardware error
+1112|Computer software issue
+1138|Application interface becomes non-functional or program exits abnormally
+1189|Dose calculation error due to software problem
+1449|Parameter calculation error due to software problem
+1473|Power calculation error due to software problem
+1495|Incorrect software programming calculations
+2581|Year 2000 (Y2K) related problem
+2582|Date-related software issue
+2879|Application network issue
+2880|Application program issue
+2881|Application program version or upgrade problem
+2898|Computer operating system issue
+2996|Operating system becomes non-functional
+2997|Operating system version or upgrade problem
+3013|Problem with software installation
+3014|Programming issue
+1497|Program, failure to
+2902|Data back-up problem
+2903|Loss of Data
+2591|Device displays error message
+
