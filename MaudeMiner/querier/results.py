@@ -49,8 +49,8 @@ def process_results(result, title="", doWrite=True, query=""):
 	numRecs = 0
 	for row in result:
 		# ask user if they want ot stop printing after 100 records
-		if numRecs == 100:
-			i = raw_input("100 records printed. Continue printing records? (y/N) ")
+		if numRecs == 10:
+			i = raw_input("10 records printed. Continue printing records? (y/N) ")
 			if i.lower() not in ["y", "yes"]:
 				doPrint = False
 		

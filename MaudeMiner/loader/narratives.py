@@ -33,9 +33,9 @@ def load(limit_commits=None):
 
 
 		if files.filelineno() % 1000 == 0:
-			update_progress("Loaded: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 			if files.filelineno() % LINES_PER_DB_COMMIT == 0:
 				db.commit()
+				update_progress("Loaded: ", files.filelineno(), LINES_IN_CURRENT_FILE[0])
 				num_commits += 1
 				if limit_commits and num_commits == limit_commits:
 					break

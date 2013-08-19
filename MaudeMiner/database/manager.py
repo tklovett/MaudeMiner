@@ -171,9 +171,9 @@ class DatabaseManager:
 		except:
 			print "Couldn't get count. Has the %s table been created?" % table
 
-	def execute_sql(self, sql):
+	def execute_sql(self, sql, use_labels=False):
 		try:
-			result = self.connection.execute(sql)
+			result = self.connection.execute(sql, use_labels=use_labels)
 		except OperationalError as e:
 			print e
 			return []

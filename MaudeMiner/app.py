@@ -1,12 +1,40 @@
+import sys
 from MaudeMiner.database import db
+from MaudeMiner.utils import list_table_options
 from MaudeMiner import interactive
-from utils import list_table_options
+from MaudeMiner.settings import INSTALLED_MODULES
+
+
+# # Import installed modules
+# def import_module(name):
+# 	m = __import__(name)
+# 	for n in name.split(".")[1:]:
+# 		m = getattr(m, n)
+# 	return m
+
+# modules = {}
+# for module in INSTALLED_MODULES:
+# 	modules[module] = import_module("MaudeMiner." + module)
+
+
+# commands = {}
+# for m in modules:
+# 	try:
+# 		from m import commands
+# 		for c in m + "_commands":
+# 			commands[c] = c
+# 			print c
+# 	except:
+# 		print "Module " + m + " has no commands registered. You won't be able to access this module using MaudeMiner!"
+
+
+
 import cleanser
 import downloader
 import loader
 import tokenizer
 import querier
-
+import html_generator
 
 def switch_db(args):
 	if len(args) == 0:
@@ -90,5 +118,6 @@ commands = {
 	"cleanse":  cleanser.run,
 	"tokenizer": tokenizer.run,
 	"querier":   querier.run,
+	"html":   html_generator.run,
 }
 
