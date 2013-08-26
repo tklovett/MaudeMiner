@@ -1,9 +1,9 @@
 import os
 from html import HTML
 
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
 from MaudeMiner.utils import update_progress
-from MaudeMiner.maude.models import *
+from MaudeMiner.core.models import *
 from MaudeMiner.settings import DATA_PATH
 
 INDEX_PATH = DATA_PATH + 'html/'

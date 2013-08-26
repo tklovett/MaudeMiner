@@ -1,5 +1,7 @@
 import sys
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
+from MaudeMiner.core import downloader
+from MaudeMiner.core import loader
 from MaudeMiner.utils import list_table_options
 from MaudeMiner import interactive
 from MaudeMiner.settings import INSTALLED_MODULES
@@ -30,8 +32,6 @@ from MaudeMiner.settings import INSTALLED_MODULES
 
 
 import cleanser
-import downloader
-import loader
 import tokenizer
 import querier
 import html_generator

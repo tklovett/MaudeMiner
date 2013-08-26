@@ -1,5 +1,5 @@
-from MaudeMiner.database import db
-from MaudeMiner.maude.models import Contact, Event
+from MaudeMiner.core.database import db
+from MaudeMiner.core.models import Contact, Event
 from sqlalchemy import or_
 
 from MaudeMiner.cleanser.utils import remove_punctuation, normalize_whitespace, unabbreviate

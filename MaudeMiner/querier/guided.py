@@ -1,5 +1,5 @@
 import os
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
 from MaudeMiner.settings import DATA_PATH
 from MaudeMiner.querier.results import process_results
 from datetime import datetime

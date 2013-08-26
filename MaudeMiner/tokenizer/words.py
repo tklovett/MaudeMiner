@@ -2,11 +2,11 @@ import string
 from nltk import wordpunct_tokenize
 from sqlalchemy.sql.expression import ClauseElement
 
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
 from MaudeMiner.tokenizer import models as m
 from MaudeMiner.utils import update_progress, strip_punctuation
 from MaudeMiner.loader.utils import get_files_with_prefix, LINES_IN_CURRENT_FILE
-from MaudeMiner.maude.models import Narrative
+from MaudeMiner.core.models import Narrative
 from MaudeMiner.settings import LINES_PER_DB_COMMIT, TXTS_PATH
 
 

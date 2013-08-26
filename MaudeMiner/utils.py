@@ -1,7 +1,7 @@
 import sys
 import string
 import re
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
 
 def update_progress(prefix, complete, total):
 	if total == None or total == 0:

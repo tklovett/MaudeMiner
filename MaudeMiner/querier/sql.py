@@ -1,4 +1,4 @@
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
 from MaudeMiner import interactive
 from MaudeMiner.querier.results import process_results
 

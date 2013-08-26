@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, Table
 from sqlalchemy.orm import relationship
 
-from MaudeMiner.database import db
-from MaudeMiner.database.base import base
+from MaudeMiner.core.database import db
+from MaudeMiner.core.database.base import base
 
 
 Contains_Token = Table('Contains_Token', base.metadata,
