@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-from MaudeMiner.database.base import base
+from MaudeMiner.core.database.base import base
 
 
 def create(engine, tables=[]):

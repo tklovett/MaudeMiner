@@ -1,5 +1,5 @@
-from MaudeMiner.database import db
-from MaudeMiner.maude.models import Event, Contact
+from MaudeMiner.core.database import db
+from MaudeMiner.core.models import Event, Contact
 from MaudeMiner.utils import update_progress
 from MaudeMiner.loader.utils import *
 from MaudeMiner.settings import LINES_PER_DB_COMMIT

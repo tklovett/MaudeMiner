@@ -1,5 +1,5 @@
-from MaudeMiner.database import db
-from MaudeMiner.maude.models import DeviceProblemCode
+from MaudeMiner.core.database import db
+from MaudeMiner.core.models import DeviceProblemCode
 from MaudeMiner.utils import update_progress
 from MaudeMiner.loader.utils import *
 

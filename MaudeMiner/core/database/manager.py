@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError, OperationalError
 
 from MaudeMiner.settings import DATA_PATH, DATABASE_PATH, DATABASE_NAME
-from MaudeMiner.database.base import base
+from MaudeMiner.core.database.base import base
 
 
 class DatabaseManager:

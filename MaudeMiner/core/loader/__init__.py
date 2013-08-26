@@ -2,7 +2,7 @@ import os
 import sys
 import fileinput
 from MaudeMiner.utils import list_table_options
-from MaudeMiner.database import db
+from MaudeMiner.core.database import db
 
 from MaudeMiner.loader import events
 from MaudeMiner.loader import narratives
