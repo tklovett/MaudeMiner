@@ -13,6 +13,8 @@ $ python setup.py install
 
 Then modify the settings as desired:  
 ```$ nano MaudeMiner/settings.py```
+**Note:**
+If you forget to change these settings, MaudeMiner will use `C:/maude` as the default data storage directory. This may cause problems on Mac OS or Linux. If you're using a Windows machine without access to that folder, MaudeMiner may fail without clear explanation.
 
 
 ### Running
@@ -30,7 +32,7 @@ $ python -m MaudeMiner
 ```
 **Note:**
 Depending on the speed of your machine, downloading the data and loading it into a database locally may take a long time.
-Dowloading may take up to 10 minutes. Loading may take hours. I recommend letting it run overnight if you don't have a powerful machine.
+Dowloading may take up to 10 minutes. Loading may take hours. I recommend letting the loader run overnight if you don't have a fast machine with plenty of RAM to spare.
 
 
 LICENSE
