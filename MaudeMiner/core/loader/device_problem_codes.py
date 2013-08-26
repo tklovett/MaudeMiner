@@ -1,7 +1,7 @@
 from MaudeMiner.core.database import db
 from MaudeMiner.core.models import DeviceProblemCode
 from MaudeMiner.utils import update_progress
-from MaudeMiner.loader.utils import *
+from MaudeMiner.core.loader.utils import *
 
 EXPECTED_NUMBER_OF_FIELDS = 2
 

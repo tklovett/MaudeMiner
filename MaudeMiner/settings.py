@@ -17,7 +17,6 @@ MAUDE_DATA_ORIGIN = 'http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidan
 LINES_PER_DB_COMMIT = 1000 * 50
 
 # MaudeMiner will load any modules listed here
-# Built-in modules: database, maude, downloader, loader
 INSTALLED_MODULES = (
 	"querier",
 	"tokenizer",

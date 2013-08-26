@@ -1,7 +1,7 @@
 from MaudeMiner.core.database import db
 from MaudeMiner.core.models import DeviceProblem
 from MaudeMiner.utils import update_progress
-from MaudeMiner.loader.utils import *
+from MaudeMiner.core.loader.utils import *
 from MaudeMiner.settings import LINES_PER_DB_COMMIT
 
 

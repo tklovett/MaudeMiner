@@ -4,12 +4,12 @@ import fileinput
 from MaudeMiner.utils import list_table_options
 from MaudeMiner.core.database import db
 
-from MaudeMiner.loader import events
-from MaudeMiner.loader import narratives
-from MaudeMiner.loader import devices
-from MaudeMiner.loader import device_problems
-from MaudeMiner.loader import device_problem_codes
-from MaudeMiner.loader import patients
+from MaudeMiner.core.loader import events
+from MaudeMiner.core.loader import narratives
+from MaudeMiner.core.loader import devices
+from MaudeMiner.core.loader import device_problems
+from MaudeMiner.core.loader import device_problem_codes
+from MaudeMiner.core.loader import patients
 
 
 LINES_PER_COMMIT = 50000
