@@ -6,7 +6,7 @@ A tool for analyzing the FDA's MAUDE dataset.
 ### Installation
 ```
 $ git clone https://github.com/tklovett/MaudeMiner.git
-$ pip install nltk sqlalchemy beautifulsoup4 html
+$ pip install nltk sqlalchemy beautifulsoup4 html html5lib
 $ cd MaudeMiner
 $ python setup.py install
 ```

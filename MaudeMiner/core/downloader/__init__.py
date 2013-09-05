@@ -11,7 +11,7 @@ def get_data_urls():
 	sys.stdout.write("Scraping MAUDE website for data urls: ")
 	sys.stdout.flush()
 	urls = []
-	soup = BeautifulSoup(str(urlopen(MAUDE_DATA_ORIGIN).read()))
+	soup = BeautifulSoup(str(urlopen(MAUDE_DATA_ORIGIN).read()), "html5lib")
 	# search page for anchor tags with links to zip files
 	for a in soup.findAll('a'):
 		if a.has_attr('href') and ".zip" in a['href']:
