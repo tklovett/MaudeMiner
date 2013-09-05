@@ -3,11 +3,11 @@
 #######################
 
 # Database settings
-DATABASE_PATH = 'C:/maude/'
+DATABASE_PATH = '/Users/tklovett/maude/'
 DATABASE_NAME = 'maude'
 
 # These setting control where the text files and zip files retrieved from the FDA website are stored
-DATA_PATH = 'C:/maude/data/'
+DATA_PATH = '/Users/tklovett/maude/data/'
 ZIPS_PATH = DATA_PATH + 'zips/'
 TXTS_PATH = DATA_PATH + 'txts/'
 
